@@ -549,15 +549,24 @@
                         </div>
 
                         <div class="field">
-                            <label for="consumption">Yearly electricity consumption</label>
-                            <input type="number" id="consumption" value="" min="0" step="any" placeholder="kWh per year">
-                            <div class="hint">Units (kWh) per year. Leave blank if unknown.</div>
+                            <label>Input period for electricity usage and bill</label>
+                            <div class="seg" id="periodSeg">
+                                <button type="button" data-v="YEARLY" aria-pressed="true">Yearly</button>
+                                <button type="button" data-v="MONTHLY" aria-pressed="false">Monthly</button>
+                            </div>
+                            <div class="hint" id="periodHint">Enter total annual consumption and bill for better accuracy.</div>
                         </div>
 
                         <div class="field">
-                            <label for="bill">Yearly bill</label>
+                            <label for="consumption" id="consumptionLabel">Yearly electricity consumption</label>
+                            <input type="number" id="consumption" value="" min="0" step="any" placeholder="kWh per year">
+                            <div class="hint" id="consumptionHint">Units (kWh) per year. Leave blank if unknown.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="bill" id="billLabel">Yearly bill</label>
                             <input type="number" id="bill" value="" min="0" step="any" placeholder="₹ per year">
-                            <div class="hint">₹ per year. Required for the ROI section.</div>
+                            <div class="hint" id="billHint">₹ per year. Required for the ROI section.</div>
                         </div>
 
                         <div class="field">

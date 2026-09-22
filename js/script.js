@@ -472,7 +472,7 @@ function initSolarCalculator() {
     }
     function row(label, value, sub) { return "<tr><td>" + label + (sub ? '<span class="sub">' + sub + "</span>" : "") + "</td><td>" + value + "</td></tr>"; }
 
-    var state = { panel: "A", segment: "RES", subsidy: "Y" };
+    var state = { panel: "A", segment: "RES", subsidy: "Y", period: "YEARLY" };
     function wireSeg(id, key) {
       var box = $(id);
       if (!box) return;
@@ -490,6 +490,8 @@ function initSolarCalculator() {
       var g = {};
       var cityInfo = lookupCity($("city") ? $("city").value : "");
       g.cityInfo = cityInfo;
+      g.inputPeriod = state.period;
+      var periodMultiplier = state.period === "MONTHLY" ? 12 : 1;
       var pshOv = num("psh");
       g.psh = pshOv !== null ? pshOv : cityInfo.psh;
       g.pshOverridden = pshOv !== null;
@@ -503,8 +505,10 @@ function initSolarCalculator() {
       g.panelLabel = state.panel === "A" ? "A · below 650 Wp" : "B · 700 Wp";
       g.otherLabel = state.panel === "A" ? "B (700 Wp)" : "A (below 650 Wp)";
 
-      g.consumption = num("consumption");
-      g.bill = num("bill");
+      var enteredConsumption = num("consumption");
+      var enteredBill = num("bill");
+      g.consumption = enteredConsumption === null ? null : enteredConsumption * periodMultiplier;
+      g.bill = enteredBill === null ? null : enteredBill * periodMultiplier;
       g.area = num("area");
       g.fixed = numOr("fixed", 0);
       g.tariffOv = num("tariffOv");
@@ -827,6 +831,7 @@ function buildPayloadForPDF(email, clientName, clientPhone) {
         yearly_consumption: g.consumption, 
         yearly_bill: g.bill, 
         shadow_free_area: g.area,
+        input_period: g.inputPeriod === "MONTHLY" ? "Monthly" : "Yearly",
         solar_panel_selection: state.panel === "A" ? "A (650 Wp or below)" : "B (above 650 Wp)",
         required_plant_size: s ? s.installedKWp : null, 
         specific_yield: g.yield,
@@ -964,6 +969,19 @@ function downloadBase64PDF(base64Data, filename) {
     wireSeg("panelSeg", "panel");
     wireSeg("segSeg", "segment");
     wireSeg("subSeg", "subsidy");
+    wireSeg("periodSeg", "period");
+
+    function updatePeriodLabels() {
+      var isMonthly = state.period === "MONTHLY";
+      var periodName = isMonthly ? "Monthly" : "Yearly";
+      if ($("consumptionLabel")) $("consumptionLabel").textContent = periodName + " electricity consumption";
+      if ($("consumption")) $("consumption").placeholder = isMonthly ? "kWh per month" : "kWh per year";
+      if ($("consumptionHint")) $("consumptionHint").textContent = "Units (kWh) per " + (isMonthly ? "month" : "year") + ". Leave blank if unknown.";
+      if ($("billLabel")) $("billLabel").textContent = periodName + " bill";
+      if ($("bill")) $("bill").placeholder = "₹ per " + (isMonthly ? "month" : "year");
+      if ($("billHint")) $("billHint").textContent = "₹ per " + (isMonthly ? "month" : "year") + ". Required for the ROI section.";
+    }
+    $("periodSeg").addEventListener("click", updatePeriodLabels);
     // initCalcSubmit();    // --> I DELETED THE DUPLICATE initCalcSubmit(); FROM HERE <--
     
     $("inputs").addEventListener("input", recalc);
@@ -980,15 +998,17 @@ function downloadBase64PDF(base64Data, filename) {
     if($("resetBtn")) {
         $("resetBtn").addEventListener("click", function () {
           for (var k in DEFAULTS) { if ($(k)) $(k).value = DEFAULTS[k]; }
-          state.panel = "A"; state.segment = "RES"; state.subsidy = "Y";
-          ["panelSeg", "segSeg", "subSeg"].forEach(function (id) {
+          state.panel = "A"; state.segment = "RES"; state.subsidy = "Y"; state.period = "YEARLY";
+          ["panelSeg", "segSeg", "subSeg", "periodSeg"].forEach(function (id) {
             var bs = $(id).querySelectorAll("button");
             for (var i = 0; i < bs.length; i++) bs[i].setAttribute("aria-pressed", i === 0 ? "true" : "false");
           });
+          updatePeriodLabels();
           recalc();
         });
     }
 
+    updatePeriodLabels();
     initCalcSubmit();
     recalc();
 }
