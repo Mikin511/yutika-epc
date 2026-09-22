@@ -532,7 +532,7 @@ function initSolarCalculator() {
       var variable = g.bill === null ? null : Math.max(0, g.bill - g.fixed);
       if (variable !== null && g.consumption !== null && g.consumption > 0) { return { rate: variable / g.consumption, basis: "derived" }; }
       if (g.tariffOv !== null) return { rate: g.tariffOv, basis: "override" };
-      return { rate: g.isRes ? 8.00 : 9.00, basis: "default" };
+      return { rate: g.isRes ? 11.00 : 22.00, basis: "default" };
     }
     function resolveConsumption(g, tariff) {
       if (g.consumption !== null && g.consumption > 0) { return { kwh: g.consumption, estimated: false }; }
