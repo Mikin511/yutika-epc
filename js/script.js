@@ -980,6 +980,9 @@ function downloadBase64PDF(base64Data, filename) {
       if ($("billLabel")) $("billLabel").textContent = periodName + " bill";
       if ($("bill")) $("bill").placeholder = "₹ per " + (isMonthly ? "month" : "year");
       if ($("billHint")) $("billHint").textContent = "₹ per " + (isMonthly ? "month" : "year") + ". Required for the ROI section.";
+      if ($("periodHint")) $("periodHint").textContent = isMonthly
+        ? "Enter your highest monthly consumption and bill."
+        : "Enter total annual consumption and bill for better accuracy.";
     }
     $("periodSeg").addEventListener("click", updatePeriodLabels);
     // initCalcSubmit();    // --> I DELETED THE DUPLICATE initCalcSubmit(); FROM HERE <--
