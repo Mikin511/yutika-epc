@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1628"/>
+      <stop offset="1" stop-color="#4f3a1f"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <g stroke="#F5A623" fill="none" opacity="0.35">
+    <circle cx="400" cy="300" r="70" stroke-width="2"/>
+    <circle cx="400" cy="300" r="95" stroke-width="1" opacity="0.5"/>
+  </g>
+  <text x="400" y="300" font-family="'Exo 2',Arial,sans-serif" font-size="26" font-weight="600" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">PRESENTATION</text>
+  <text x="400" y="340" font-family="Arial,sans-serif" font-size="13" fill="#B0B8C1" text-anchor="middle" dominant-baseline="central">PLACEHOLDER - REPLACE THIS IMAGE</text>
+</svg>
