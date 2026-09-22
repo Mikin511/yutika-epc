@@ -1,5 +1,5 @@
 /* ============================================================
-   MIKIN SOLAR DESIGN - script.js
+  YUTIKA ENTERPRISES - script.js
    Vanilla JavaScript - all site interactions.
    ============================================================ */
 

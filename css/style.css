@@ -1,5 +1,5 @@
 /* ============================================================
-   MIKIN SOLAR DESIGN - style.css
+    YUTIKA ENTERPRISES - style.css
    Premium technical engineering portfolio theme.
    ------------------------------------------------------------
    DESIGN SYSTEM
@@ -171,14 +171,10 @@ h1, h2, h3, h4 {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 18px;
-    color: var(--bg);
-    background: linear-gradient(135deg, var(--accent), #ffd080);
+    display: block;
+    padding: 3px;
+    object-fit: contain;
+    background: #ffffff;
     box-shadow: 0 0 18px var(--glow-gold);
 }
 
@@ -348,14 +344,10 @@ h1, h2, h3, h4 {
     width: 52px;
     height: 52px;
     border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 20px;
-    color: var(--bg);
-    background: linear-gradient(135deg, var(--accent), #ffd080);
+    display: block;
+    padding: 4px;
+    object-fit: contain;
+    background: #ffffff;
     box-shadow: 0 0 22px var(--glow-gold);
 }
 
@@ -643,69 +635,8 @@ h1, h2, h3, h4 {
 /* ==================== ABOUT ==================== */
 .about-grid {
     display: grid;
-    grid-template-columns: minmax(280px, 380px) 1fr;
-    gap: clamp(30px, 5vw, 70px);
-    align-items: center;
-}
-
-/* Photo with gold border frame */
-.about-photo-col {
-    position: relative;
-}
-
-.about-photo-frame {
-    position: relative;
-    padding: 14px;
-    border: 2px solid var(--accent);
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.15), rgba(0, 168, 232, 0.1));
-    box-shadow: 0 0 40px var(--glow-gold), inset 0 0 30px rgba(245, 166, 35, 0.06);
-}
-
-.about-photo-frame::before {
-    content: "";
-    position: absolute;
-    top: -22px;
-    right: -22px;
-    width: 90px;
-    height: 90px;
-    border-top: 3px solid var(--secondary);
-    border-right: 3px solid var(--secondary);
-    border-radius: 0 14px 0 0;
-    opacity: 0.7;
-}
-
-.about-photo-frame img {
-    border-radius: 12px;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 5 / 6;
-    object-fit: cover;
-}
-
-.about-badge {
-    position: absolute;
-    bottom: -18px;
-    right: -10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px;
-    border-radius: 14px;
-    background: var(--card);
-    border: 1px solid var(--border-strong);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    font-size: 13px;
-    color: var(--muted);
-}
-
-.about-badge i {
-    color: var(--accent);
-    font-size: 20px;
-}
-
-.about-badge strong {
-    color: var(--text);
+    grid-template-columns: minmax(0, 900px);
+    justify-content: center;
 }
 
 .about-text-col .about-lead {
@@ -1601,7 +1532,7 @@ h1, h2, h3, h4 {
 
     .why-grid { grid-template-columns: repeat(2, 1fr); }
 
-    .about-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+    .about-grid { max-width: 900px; margin: 0 auto; }
 
     .contact-grid { grid-template-columns: 1fr; max-width: 640px; }
 
@@ -1644,7 +1575,6 @@ h1, h2, h3, h4 {
     .review-form-wrap,
     .contact-form-wrap { padding: 28px 20px; }
 
-    .about-badge { right: 0; }
 }
 
 /* ==================== AOS PERF / REDUCED MOTION ==================== */
@@ -1660,7 +1590,7 @@ h1, h2, h3, h4 {
     }
 }
 /* ============================================================
-   SOLAR CALCULATOR SECTION STYLES (Mikin Theme Integration)
+    SOLAR CALCULATOR SECTION STYLES (Yutika Enterprises Theme Integration)
    ============================================================ */
 .calculator-section {
     position: relative;
