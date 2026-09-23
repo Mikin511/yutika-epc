@@ -923,7 +923,7 @@ function downloadBase64PDF(base64Data, filename) {
         }
         
         modal.classList.add("processing");
-        status.textContent = "Generating PDF and sending email... (this takes ~5-10 seconds)";
+        status.textContent = "Generating PDF and sending email... (this takes ~10-15 seconds)";
         status.style.color = "#d4af37";
         sendBtn.disabled = true;
 
