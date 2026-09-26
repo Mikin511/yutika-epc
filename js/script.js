@@ -844,7 +844,11 @@ function buildPayloadForPDF(email, clientName, clientPhone) {
         one_year_saving: r ? r.save1 : null,
         net_cost: r ? r.net : null,
         irr_percent: r && r.irr !== null ? (r.irr * 100) : null,
-        monthly_outputs: monthlyOutputs
+        monthly_outputs: monthlyOutputs,
+        pm_subsidy : r ? r.subsidy : null,
+        state_subsidy : r ? r.stateSub : null,
+        gross_cost : r ? r.gross : null,
+        
     };
 }
 
